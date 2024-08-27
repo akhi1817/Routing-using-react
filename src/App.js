@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/bootstrap/dist/js/bootstrap.min.js';
+
+import { BrowserRouter as Router, Routes,Route} from 'react-router-dom';
+import Navbar from './Navbar.jsx';
+import Home from './Home.jsx';
+import About from './About.jsx';
+import Contact from './Contact.jsx';
+import Service from './Service.jsx';
+import Blog from './Blog.jsx';
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <React.StrictMode>
+      <Router>
+        <Navbar/>
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/about' element={<About/>}/>
+          <Route path='/contact' element={<Contact/>}/>
+          <Route path='/service' element={<Service/>}/>
+          <Route path='/blog' element={<Blog/>}/>
+        </Routes>
+        
+      </Router>
+    
 
-export default App;
+    </React.StrictMode>
+  )
+}
